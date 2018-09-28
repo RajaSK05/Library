@@ -1,0 +1,32 @@
+<section>
+    {{#if data.image}}
+    <img src={{data.image}} alt={{data.text}} width="50">
+    <h1>{{data.text}}</h1>
+    {{/if}}
+    {{#if book.title}}
+    <h2>{{book.title}}</h2>
+    {{/if}}
+     {{#if data.name}}
+    <h2>{{data.name}}</h2>
+    {{/if}}
+    {{#if data.address}}
+    <p>{{data.address}}</p>
+    {{/if}}
+    {{#if data.phone}}
+    <p>{{data.phone}}</p>
+    {{/if}}
+    {{#if data.country}}
+    <h4>Country : {{data.country}}</h4>
+    {{/if}}
+    {{#if author.name}}
+    <h4>Author : {{author.name}}</h4>
+    {{/if}}
+    {{#if data.publisher}}
+    <h4>Publisher : {{data.publisher}}</h4>
+    {{/if}}
+    {{#if book.year}}
+    <h4>Year : {{book.year}}</h4>
+    {{/if}}
+</section>
+
+{{yield}}

@@ -1,0 +1,35 @@
+<div class="head flex dark">
+<span><h2>BOOKS</h2></span>
+{{#if storage.user}}
+<div>
+    <button class="edit-btn" onclick={{action 'toggleIsEditBook'}} style="width:125px;"><img class="edit-icon" src="../edit.png" alt="Edit" width="20">Edit Book</button>
+    <button class="delete-btn" onclick={{action 'getConfirm'}} style="width:125px;">Delete Book</button>
+</div>{{/if}}
+</div>
+<section class="info">
+    <h1 class="main">{{book.title}}</h1>
+    <div class="content">
+    <h2 class="title">AUTHOR</h2>
+    <p>{{#link-to 'author' book.author.id}}{{book.author.content.name}}{{/link-to}}</p>
+    <h2 class="title">CATEGORIES</h2>
+    {{#each book.categories as |category|}}
+    <p>{{category}}</p>
+    {{/each}}
+    <h2 class="title">PUBLISHER</h2>
+    <p>{{#link-to 'publisher' book.publisher.id}}{{book.publisher.content.name}}, {{book.publisher.content.address}}, {{book.publisher.content.phone}}{{/link-to}}</p>
+    <h2 class="title">PUBLISHED IN</h2>
+    <p>{{book.year}}</p>
+    </div>
+</section>
+{{#if isEditBook}}
+{{#modal-dialog
+    onClose=(action (mut isEditBook) false)
+    translucentOverlay=true
+}}
+        <div class="imgcontainer">
+            <span onclick={{action 'toggleIsEditBook'}} class="close" title="Cancel">&times;</span>
+        </div>
+  {{book-form editBook=(action 'editBook') book=book authors=authors.content publishers=publishers.content}} 
+{{/modal-dialog}}
+{{/if}}
+{{outlet}}

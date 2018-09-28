@@ -1,0 +1,462 @@
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+@import "ember-power-select";
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: "Open Sans", avenir, sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background: #fff;
+
+}
+.container{
+    max-width: 960px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: #fff;
+}
+.flex{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+header{
+    color: #fff;
+    padding:10px;
+    background: #293f50;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    /* height: 4em; */
+}
+.quote{
+    background: #293f50e1;
+    text-align: center;
+    padding: 100px 0;
+    justify-content: center;
+}
+blockquote {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    width: 600px;
+    line-height: 1.45;
+    color: #fff;
+    text-align: justify;
+    }
+    
+    blockquote:before {
+    display: inline;
+    content: "\201D";
+    line-height: 0;
+    font-size: 60px;
+    color: #7a7a7a;
+    }
+    
+    blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+    }
+     
+    blockquote cite:before {
+    content: "\2014 \2009";
+    }
+.main-content{
+    background: url('../library.jpg');
+    background-size: cover;
+    min-height: 800px;
+}
+.cards{
+    justify-content: center;
+}
+
+footer{
+    color: rgba(247, 247, 255, 0.63);
+    font-size: 14px;
+    padding: 24px 200px 24px 200px;
+    background:#293f50;
+}
+section{
+    color:#323232;
+    background: rgb(231, 231, 231);
+    margin:10px;
+    width:250px;
+    height:200px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: #aaa 3px 6px 9px;
+}
+.cards section{
+    transition: transform 0.25s ease-out;
+}
+.cards section:hover{
+    transform: scale(1.1);
+    /* transition-duration: 500ms; */
+}
+.light section{
+    background: radial-gradient(#e8f8ff,#c8efff,#84ceeb);
+}
+section h2{
+    padding: 20px 0;
+}
+header a, footer a{
+    text-decoration: none;
+    color: #fff;
+}
+header h1 a{
+    // border-top: 4px solid #f0df9d;
+    border: 4px solid;
+    border-color: #f0df9d transparent;
+    border-bottom: 0;
+    color:#7db3a7;
+    font-weight: 200;
+    letter-spacing: -2px;
+}
+header h1 a:hover{
+    color:#648880;
+}
+.head{
+    color: #648880;
+    background: #293f50;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.head div{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+span{
+    display: inline-block;
+    margin-left: 10px;
+}
+.head h2{
+    font-weight: 500;
+    letter-spacing: -2px;
+}
+nav{
+    width: 350px;
+}
+a{
+    text-decoration: none;
+}
+.cards{
+    padding: 1em;
+}
+nav li{
+    display: inline-block;
+    padding-right: 30px;
+}
+nav li input[type=text]{
+    margin: 0;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: none;
+}
+.hide{
+    display: none;
+}
+#id02, #id03{
+    z-index: 1000;
+}
+section img{
+    padding-top:40px;
+}
+span input[type=text]{
+    min-width: 250px;
+}
+.head .ember-power-select-trigger{
+    width: 180px;
+}
+section.info{
+    text-align: left ;
+    padding: 50px;
+    background: radial-gradient(#e8f8ff,#c8efff,#84ceeb);
+    margin: auto;
+    width: 70%;
+    min-height: 730px;
+    height: inherit;
+}
+.table{
+    display: table;
+    margin: 40px;
+}
+.row{
+    display: table-row;
+}
+.cell{
+    display: table-cell;
+    height:40px;
+    vertical-align: top;
+    text-align: left;
+    font-weight: 300;
+    font-size: 20px;
+}
+h3.cell, h4.cell, h4.cell a{
+    color:#293f50;
+}
+.circ{
+    position: relative;
+    top:-5px;
+}
+.circle{
+    content:"";
+    border-radius: 50px;
+    width: 15px;
+    height: 25px;
+    margin-left:auto ;
+    margin-right: auto;
+    background: #fff;
+    border:3px solid #7db3a7;
+}
+.circle.start{
+    width: 30px;
+}
+.rect{
+    content:"";
+    width:5px;
+    height:inherit;
+    margin: auto;
+    display: block;
+    position: relative;
+    background: #7db3a7;
+}
+p a{color: #456;}
+.cell a:visited, p a:visited{color: #293f50}
+.cell a:hover, p a:hover {color: #648880}
+.main{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 5px;
+    color: #648880;
+    border: 5px solid;
+    border-color: #293f58 transparent;
+    border-bottom-width: 2px;
+}
+.title{
+    text-align: left;
+    font-weight: 500;
+    font-size: 22px;
+}
+h5{
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 15px
+}
+.content p{
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 200;
+    color: #456;
+
+}
+.user p{
+    border: 2px solid #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.menu{
+    position: absolute;
+    width: 50px;
+    top: 50px;
+    right: 100px;
+}
+.menu-item{
+    padding: 15px;
+    background: #aaa;
+    color: #000;
+    width:120px;
+}
+.menu-item:hover{
+    background: #000;
+    color: #aaa;
+    cursor: pointer;
+}
+.no-record{
+    text-align: center;
+}
+.no-padding{
+    padding: 0;
+}
+.center{
+    text-align: center;
+}
+.loading{
+    margin: auto;
+}
+.edit-icon{
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+}
+.edit-icon:hover{
+    background: #fff;
+}
+.delete-btn{
+    margin-left: 10px;
+    display: inline;
+}
+.edit-btn{
+    display: inline;
+    position: relative;
+}
+.ember-modal-dialog{
+    width: 500px;
+}
+
+
+
+input[type=text], input[type=password], select {
+    width: 100%;
+    padding: 6px 10px;
+    margin:0;
+    display: inline-block;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+head input[type=text]{
+    width:300px;
+}
+/* Set a style for all buttons */
+button {
+    /* background-color: #f44336; */
+    background: #d5140c;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+form button{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+label{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.add-link{
+    padding:5px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #fff;
+    color: rgb(0, 132, 255);
+    text-align: left;
+    text-decoration: underline;
+}
+.add-link:hover{
+    color: #456;
+    background: #e8f8ff;
+}
+.add-link:before{
+    content:"";
+    height: 2px;
+    background: #aaa;
+}
+.error-message{
+    color: red;
+    border: 2px solid red;
+    padding: 5px 40px;
+    border-radius: 10px
+}
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: right;
+    margin-bottom: -25px;
+}
+
+.form-container {
+    padding: 16px;
+    background: #fff;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 400px;
+}
+
+/* The Close Button (x) */
+.close {
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+}
+
+
+
+// .ember-basic-dropdown-content::after{
+//     content:"hi";
+//     display:block;
+//     height: 20px;
+//     width: 50px;
+//     background: #84ceeb;
+// }

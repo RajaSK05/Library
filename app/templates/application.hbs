@@ -1,0 +1,31 @@
+<header class="flex">
+    <h1>{{link-to 'Library Management' 'index'}}</h1>
+    <nav class="flex">
+        {{link-to 'Books' 'books'}}
+        {{link-to 'Authors' 'authors'}}
+        {{link-to 'Publishers' 'publishers'}}
+        <span class="user">
+            {{#if user}}
+            <p onclick={{action 'toggleMenu'}}>{{user}}</p>
+            <div class="menu {{if hide 'hide'}}">
+                {{!-- <div class="menu-item">My Account</div> --}}
+                <div class="menu-item" onclick={{action 'logout'}}>Logout</div>
+            </div>
+            {{else}}
+            <button class="login-btn" onclick={{action 'login'}}>Login</button>
+            {{/if}}
+            </span>
+    </nav>
+</header>
+
+<div class="main-content">
+{{outlet}}
+</div>
+<footer class="flex">
+    <small>Library Management</small>
+    <nav class="flex">
+        {{link-to 'Books' 'books'}}
+        {{link-to 'Authors' 'authors'}}
+        {{link-to 'Publishers' 'publishers'}}
+    </nav>
+</footer>

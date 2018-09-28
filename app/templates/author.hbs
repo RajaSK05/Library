@@ -1,0 +1,52 @@
+<div class="head flex dark">
+    <span>
+        <h2>AUTHORS</h2>
+    </span>
+    {{#if storage.user}}
+    <div>
+    <button class="edit-btn" onclick={{action 'toggleIsEditAuthor'}} style="width:125px;"><img class="edit-icon" src="../edit.png" alt="Edit" width="20">Edit Author</button>
+    <button class="delete-btn" onclick={{action 'getConfirm'}} style="width:125px;">Delete Author</button>
+    </div>
+    {{/if}}
+</div>
+<section class="info">
+    <h1 class="main">{{author.name}}</h1>
+    <br>
+    <h2 class="title">BOOKS</h2>
+    {{#if author.books}}
+    <div class="table">
+        {{#each (sort-by 'year:desc' author.books) as |book|}}
+        <div class="row">
+            <h3 class="cell">{{book.year}}</h3>
+            <div class="cell circ">
+                <div class="circle"></div>
+                <div class="rect"></div>
+            </div>
+            <h4 class="cell">{{#link-to 'book' book.id}}{{book.title}}{{/link-to}}</h4>
+        </div>
+        {{/each}}
+        <div class="row">
+            <h3 class="cell"></h3>
+            <div class="cell circ">
+                <div class="circle start"></div>
+                <h5>Beginning</h5>
+            </div>
+            <h4 class="cell"></h4>
+        </div>
+    </div>
+    {{else}}
+    <div class="no-record"><img src="../norecord.png" alt="No records found!" width="35%"></div>
+    {{/if}}
+</section>
+{{#if isEditAuthor}}
+{{#modal-dialog
+    onClose=(action (mut isEditAuthor) false)
+    translucentOverlay=true
+}}
+        <div class="imgcontainer">
+            <span onclick={{action 'toggleIsEditAuthor'}} class="close" title="Cancel">&times;</span>
+        </div>
+  {{author-form editAuthor=(action 'editAuthor') author=author}} 
+{{/modal-dialog}}
+{{/if}}
+{{outlet}}

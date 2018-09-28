@@ -1,0 +1,30 @@
+<div class="head flex dark">
+    <div>
+        <span><h2>AUTHORS</h2></span>
+    </div>
+    <div>
+        <span>{{input type="text" value=value placeholder="Search..." key-up=(action 'handleFilterEntry')}}</span>
+        {{#if storage.user}}<span><button onclick={{action 'toggleAuthorModalDialog'}} style="width:125px;">+ New Author</button></span>{{/if}}
+    </div>
+</div>
+<div class="cards flex light">
+    {{#if isAdded}} 
+     {{#if searchedAuthors}}
+    {{#each searchedAuthors as |author|}}{{#link-to 'author' author.id}}{{card-view data=author.__data}}{{/link-to}} {{/each}}
+     {{else}}
+    {{#each authors as |author|}}{{#link-to 'author' author.id}}{{card-view data=author.__data}}{{/link-to}} {{/each}}
+    {{/if}}
+    {{/if}}
+</div>
+{{#if authorModalDialog}}
+{{#modal-dialog
+    onClose=(action (mut authorModalDialog) false)
+    translucentOverlay=true
+}}
+        <div class="imgcontainer">
+            <span onclick={{action 'toggleAuthorModalDialog'}} class="close" title="Cancel">&times;</span>
+        </div>
+  {{author-form addAuthor=(action 'addAuthor')}} 
+{{/modal-dialog}}
+{{/if}}
+{{outlet}}

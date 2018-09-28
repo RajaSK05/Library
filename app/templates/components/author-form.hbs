@@ -1,0 +1,16 @@
+<div class="form-container">
+    <form {{action (if editAuthor 'editAuthor' 'addAuthor') on='submit'}}>
+        <div>
+            <label for="aname"><b>Author Name</b></label>
+            {{input type="text" placeholder="Enter Name" name="aname" value=newAuthor.name required=true}}
+
+            <label for="country"><b>Country</b></label>
+            {{input type="text" placeholder="Enter Country" name="country" value=newAuthor.country required=true}}
+
+            <button type="submit">{{if editAuthor 'Save' 'Add Author'}}</button>
+            {{!-- <label>
+                <input type="checkbox" checked="checked" name="remember"> Add another
+            </label> --}}
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+<div class="form-container">
+    <form name="book-form"{{action (if editBook 'editBook' 'addBook') on='submit'}}>
+        <div>
+            <label for="title"><b>Title</b></label>
+            {{input type="text" placeholder="Enter Title" name="title" value=newBook.title required=true}}
+
+            <label for="author"><b>Author</b></label>
+            {{#power-select
+            options=authors
+            searchField="__data.name"
+            selected=newBook.author 
+            onchange=(action (mut newBook.author)) 
+            noMatchesMessage=addAuthorButton
+             as |author|}} 
+            {{author.__data.name}}
+            {{/power-select}}
+
+            <label for="title"><b>Category</b></label>
+            {{#power-select-multiple options=categories 
+            selected=newBook.categories 
+            onchange=(action (mut newBook.categories)) 
+            as |category|}}
+            {{category}}
+            {{/power-select-multiple}}
+
+            <label for="publisher"><b>Publisher</b></label>
+            {{#power-select 
+            options=publishers
+            searchField="__data.name" 
+            selected=newBook.publisher 
+            onchange=(action (mut newBook.publisher)) 
+            noMatchesMessage=addPublisherButton
+            as |publisher|}}
+            {{publisher.__data.name}}
+            {{/power-select}}
+            
+
+            <label for="year"><b>Year</b></label>
+            {{input type="text" placeholder="Enter Year" name="year" value=newBook.year required=true}}
+
+            <button type="submit">{{if editBook 'Save' 'Add Book'}}</button>
+            {{!-- <label>
+                <input type="checkbox" checked="checked" name="remember"> Add another
+            </label> --}}
+        </div>
+    </form>
+</div>
+{{yield newBook}}

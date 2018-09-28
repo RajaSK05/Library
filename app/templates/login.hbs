@@ -1,0 +1,16 @@
+<div class="modal" style="display:block">
+    <form class="modal-content animate" {{action 'validateLogin' on='submit'}}>
+        <div class="imgcontainer">
+            {{#if error}}<span class="error-message">{{error}}</span>{{/if}}
+            <span onclick={{action 'closeLoginForm'}} class="close" title="Cancel">&times;</span>
+        </div>
+        <div class="form-container">
+            <label for="uname"><b>Username</b></label>
+            {{input type="text" placeholder="Enter Username" name="uname" value=uname required=true}}
+            <label for="pass"><b>Password</b></label>
+            {{input type="password" placeholder="Enter password" name="pass" value=password required=true}}
+            <button type="submit">Login</button>
+        </div>
+    </form>
+</div>
+{{outlet}}

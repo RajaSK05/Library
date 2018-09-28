@@ -1,0 +1,69 @@
+
+<div class="head flex dark">
+    <div>
+        <span><h2>BOOKS</h2></span>
+        <span>
+            {{#power-select options=categories placeholder="Choose a category..." selected=selectedCategory onchange=(action (mut selectedCategory))
+            as |category|}} {{category}} {{/power-select}}
+        </span>
+    </div>
+    <div>
+        <span>{{input type="text" value=value placeholder="Search..." key-up=(action 'handleFilterEntry')}}</span>
+        {{#if storage.user}}<span><button onclick={{action 'toggleBookModalDialog'}} style="width:125px;">+ New Book</button></span>{{/if}}
+    </div>
+</div>
+<div class="cards flex light">
+    {{#if isAdded}} 
+        {{#if searchedBooks}}
+            {{#if (eq searchedBooks.length 4)}}
+                <section><img class="no-padding" src="../norecord.png" alt="No records found!"></section>
+            {{else}}
+            {{#each (sort-by '__data.title' searchedBooks) as |book|}}{{#link-to 'book' book.id}}{{card-view book=book.__data author=book.author.content}}{{/link-to}} {{/each}}
+            {{/if}}
+        {{else}}{{#if filteredBooks}}
+            {{#each (sort-by '__data.title' filteredBooks) as |book|}}{{#link-to 'book' book.id}}{{card-view book=book.__data author=book.author.content}}{{/link-to}} {{/each}}
+        {{else}}
+            <section><img class="no-padding" src="../norecord.png" alt="No records found!"></section>
+        {{/if}}
+        {{/if}}
+    {{/if}}
+</div>
+
+
+{{#if bookModalDialog}}
+{{#modal-dialog
+    onClose=(action (mut bookModalDialog) false)
+    translucentOverlay=true
+}}
+        <div class="imgcontainer">
+            <span onclick={{action 'toggleBookModalDialog'}} class="close" title="Cancel">&times;</span>
+        </div>
+  {{book-form addBook=(action 'addBook') booksController=this.controller authors=authors publishers=publishers categories=categories toggleAuthorModalDialog=(action 'toggleBookModalDialog')}} 
+{{/modal-dialog}}
+{{/if}}
+
+{{#if authorModalDialog}}
+{{#modal-dialog
+    onClose=(action (mut authorModalDialog) false)
+    translucentOverlay=true
+}}
+        <div class="imgcontainer">
+            <span onclick={{action 'toggleAuthorModalDialog'}} class="close" title="Cancel">&times;</span>
+        </div>
+  {{author-form addAuthor=(action 'addAuthor') closeAuthorForm=(action 'closeAuthorForm')}} 
+{{/modal-dialog}}
+{{/if}}
+
+{{#if publisherModalDialog}}
+{{#modal-dialog
+    onClose=(action (mut publisherModalDialog) false)
+    translucentOverlay=true
+}}
+        <div class="imgcontainer">
+            <span onclick={{action 'togglePublisherModalDialog'}} class="close" title="Cancel">&times;</span>
+        </div>
+  {{publisher-form addPublisher=(action 'addPublisher') closePublisherForm=(action 'closePublisherForm')}}
+{{/modal-dialog}}
+{{/if}}
+
+{{outlet}}

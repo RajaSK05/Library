@@ -1,0 +1,19 @@
+<div class="form-container">
+<form {{action 'addPublisher' on='submit'}}>
+    <div>
+      <label for="pname"><b>Publisher Name</b></label>
+      {{input type="text" placeholder="Enter Name" name="pname" value=newPublisher.name required=true}}
+
+      <label for="address"><b>Address</b></label>
+      {{input type="text" placeholder="Enter Address" name="address" value=newPublisher.address required=true}}
+
+      <label for="phone"><b>Phone No</b></label>
+      {{input type="text" placeholder="Enter Phone No." name="phone" value=newPublisher.phone required=true}}
+  
+      <button type="submit">Add Publisher</button>
+      {{!-- <label>
+        <input type="checkbox" checked="checked" name="remember"> Add another
+      </label> --}}
+    </div>
+  </form>
+</div>
