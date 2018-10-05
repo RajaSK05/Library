@@ -35,10 +35,12 @@
     onClose=(action (mut bookModalDialog) false)
     translucentOverlay=true
 }}
-        <div class="imgcontainer">
             <span onclick={{action 'toggleBookModalDialog'}} class="close" title="Cancel">&times;</span>
-        </div>
-  {{book-form addBook=(action 'addBook') booksController=this.controller authors=authors publishers=publishers categories=categories toggleAuthorModalDialog=(action 'toggleBookModalDialog')}} 
+  {{book-form addBook=(action 'addBook') booksController=this.controller authors=authors publishers=publishers categories=categories
+    bookModalDialog=bookModalDialog
+    toggleBookModalDialog=(action 'toggleBookModalDialog')
+    toggleAuthorModalDialog=(action 'toggleAuthorModalDialog')
+    togglePublisherModalDialog=(action 'togglePublisherModalDialog')}} 
 {{/modal-dialog}}
 {{/if}}
 
@@ -47,10 +49,8 @@
     onClose=(action (mut authorModalDialog) false)
     translucentOverlay=true
 }}
-        <div class="imgcontainer">
-            <span onclick={{action 'toggleAuthorModalDialog'}} class="close" title="Cancel">&times;</span>
-        </div>
-  {{author-form addAuthor=(action 'addAuthor') closeAuthorForm=(action 'closeAuthorForm')}} 
+            <span onclick={{action 'closeAuthorModal'}} class="close" title="Cancel">&times;</span>
+  {{author-form addAuthor=(action 'addAuthor') closeAuthorModal=(action 'closeAuthorModal')}} 
 {{/modal-dialog}}
 {{/if}}
 
@@ -59,10 +59,8 @@
     onClose=(action (mut publisherModalDialog) false)
     translucentOverlay=true
 }}
-        <div class="imgcontainer">
-            <span onclick={{action 'togglePublisherModalDialog'}} class="close" title="Cancel">&times;</span>
-        </div>
-  {{publisher-form addPublisher=(action 'addPublisher') closePublisherForm=(action 'closePublisherForm')}}
+            <span onclick={{action 'closePublisherModal'}} class="close" title="Cancel">&times;</span>
+  {{publisher-form addPublisher=(action 'addPublisher') closePublisherModal=(action 'closePublisherModal')}}
 {{/modal-dialog}}
 {{/if}}
 

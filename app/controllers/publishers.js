@@ -35,7 +35,7 @@ export default Controller.extend({
         },
         togglePublisherModalDialog(){
             this.toggleProperty('publisherModalDialog');
-            this.toggleProperty('isAdded');
+            // this.toggleProperty('isAdded');
         },
         
         addPublisher(newPublisher) {

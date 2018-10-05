@@ -36,6 +36,7 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-data": "~3.3.0",
     "ember-data-filter": "^1.13.0",
+    "ember-engines": "^0.5.23",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",

@@ -10,9 +10,9 @@
 <div class="cards flex light">
     {{#if isAdded}} 
      {{#if searchedAuthors}}
-    {{#each searchedAuthors as |author|}}{{#link-to 'author' author.id}}{{card-view data=author.__data}}{{/link-to}} {{/each}}
+    {{#each (sort-by '__data.name' searchedAuthors) as |author|}}{{#link-to 'author' author.id}}{{card-view data=author.__data}}{{/link-to}} {{/each}}
      {{else}}
-    {{#each authors as |author|}}{{#link-to 'author' author.id}}{{card-view data=author.__data}}{{/link-to}} {{/each}}
+    {{#each (sort-by '__data.name' authors) as |author|}}{{#link-to 'author' author.id}}{{card-view data=author.__data}}{{/link-to}} {{/each}}
     {{/if}}
     {{/if}}
 </div>

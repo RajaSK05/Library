@@ -11,18 +11,15 @@ export default Component.extend({
             this.set('newAuthor.name', this.get('author.name'));
             this.set('newAuthor.country', this.get('author.country'));
         }
-        console.log("author- ",this.get('author.id'));
-        
     },
     actions: {
         addAuthor() {
             this.get('addAuthor')(this.newAuthor);
+            this.get('closeAuthorModal')();
         },
         editAuthor() {
             this.get('editAuthor')(this.newAuthor);
-        },
-        closeAuthorForm() {
-            this.get('closeAuthorForm')();
+            this.get('closeAuthorModal')();
         }
 
     },

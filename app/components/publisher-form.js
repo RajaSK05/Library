@@ -9,10 +9,10 @@ export default Component.extend({
     actions: {
         addPublisher() {
             this.get('addPublisher')(this.newPublisher);
-            this.send('closePublisherForm')
+            this.send('closePublisherModal')
         },
-        closePublisherForm() {
-            this.get('closePublisherForm')();
+        closePublisherModal() {
+            this.get('closePublisherModal')();
         }
 
     }

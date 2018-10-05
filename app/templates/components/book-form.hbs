@@ -10,7 +10,10 @@
             searchField="__data.name"
             selected=newBook.author 
             onchange=(action (mut newBook.author)) 
-            noMatchesMessage=addAuthorButton
+            afterOptionsComponent=(
+                component 'add-button'
+                toggleAuthorModalDialog=(action 'toggleAuthorModalDialog')
+            )
              as |author|}} 
             {{author.__data.name}}
             {{/power-select}}
@@ -29,7 +32,10 @@
             searchField="__data.name" 
             selected=newBook.publisher 
             onchange=(action (mut newBook.publisher)) 
-            noMatchesMessage=addPublisherButton
+            afterOptionsComponent=(
+                component 'add-button'
+                togglePublisherModalDialog=(action 'togglePublisherModalDialog')
+            )
             as |publisher|}}
             {{publisher.__data.name}}
             {{/power-select}}

@@ -11,7 +11,7 @@ export default Controller.extend({
         },
         getConfirm(){
             if(confirm("Are you sure want to delete this book?")){
-                this.store.findRecord('book', this.model.id).then((book)=>{
+                this.store.findRecord('book', this.book.id).then((book)=>{
                     book.destroyRecord();
                 })
                 this.transitionToRoute('books');
